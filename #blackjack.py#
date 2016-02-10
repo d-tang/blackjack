@@ -1,0 +1,16 @@
+from player import Player
+from blackjackdeck import Deck
+
+class blackjack(object):
+    def __init__ (self):
+        self.player1 = self.create_player("Player 1")
+        self.Dealer = self.create_player("Dealer")
+
+    def create_player(self, name):
+        return Player(name)
+
+    def initiategame(self):
+        deck = Deck()
+        deck.shuffle()
+        self.player1.receive_cards(deck.draw_card())
+        self.Dealer.receive_cards(deck.draw_card())
