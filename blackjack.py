@@ -23,7 +23,7 @@ class blackjack(object):
             self.Dealer.receive_cards(deck.draw_card())
 
     def Ask_for_hit(self):
-        ans = raw_input("Another Card (y,n)")
+        ans = raw_input("Another Card? (y,n) ")
         if ans == 'y':
             self.player1.receive_cards(deck.draw_card())
             self.check_Dealer_hand()
@@ -35,7 +35,7 @@ class blackjack(object):
                 self.check_Dealer_hand()
             self.determine_winner()
 
-    def determine_winner():
+    def determine_winner(self):
         if self.player1.totalhand == self.Dealer.totalhand:
             print ("Tie")
         elif self.player1.totalhand > self.Dealer.totalhand:
@@ -45,16 +45,28 @@ class blackjack(object):
 
     def checkIfBuster(self):
         if self.Dealer.hand_values > 21 and self.player1.hand_values>21:
+#            self.print_dealervalue()
             return ("Tie")
         elif self.Dealer.hand_values > 21:
+#            self.print_dealervalue()
             return ("Player 1 wins")
         elif self.player1.hand_values > 21:
+#            self.print_dealervalue()
             return ("Dealer wins")
 
+
     def print_value(self):
-        print "Your hand value is: %d" %, self.player1.totalhand
+        print "Your hand value is: %d" % self.player1.totalhand
+        return
+
+    def print_dealervalue(self):
+        print "Dealer hand value is: %d" % self.Dealer.totalhand
         return
 
     def playgame(self):
-        
-        pass
+        self.initiategame()
+        self.Ask_for_hit()
+
+if __name__ == '__main__':
+    game = blackjack()
+    game.playgame()
